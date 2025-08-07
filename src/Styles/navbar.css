@@ -1,0 +1,29 @@
+@import url('../Styles/custom-fonts.css');
+
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    gap: 20px;
+    padding: 15px 25px;
+    font-family: 'CodeNormal', sans-serif; 
+    z-index: 999;
+  }  
+
+.nav-link {
+  color: #00aaff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link.active {
+  opacity: 1;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: #2db9ff;
+}

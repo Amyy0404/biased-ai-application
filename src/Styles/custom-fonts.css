@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'CodeNormal';
+    src: url('../Fonts/BrutalistMono.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'CodeBold';
+    src: url('../Fonts/BrutalistMono-Bold.ttf') format('truetype');
+  }
+  

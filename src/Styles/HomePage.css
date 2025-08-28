@@ -1,0 +1,173 @@
+/* HomePage.css */
+@import url('../Styles/custom-fonts.css');
+
+body.home-body {
+  background-color: #000000; 
+  background-image: url("../Images/HomePageBackground.png"); 
+  background-repeat: no-repeat;      
+  background-position: top left;      
+  background-size: 1100px 700px;         
+  min-height: 90vh; 
+  color: #ffffff;
+  font-family: 'CodeNormal', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.home-container {
+  display: flex;
+  min-height: 92vh;
+  padding: 0 50px;
+}
+
+/* Left section styles */
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-right: 50px;
+}
+
+.icon-circle {
+  margin-top: 220px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.mission-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.mission-heading {
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: lowercase;
+  margin: 0 0 20px 0;
+}
+
+.mission-text {
+  margin-top: 50px;
+  color: grey;
+  font-size: 0.9rem;
+  line-height: 2.5;
+  max-width: none;
+  width: 190%;
+  text-align: justify;
+}
+
+/* Right section styles */
+.right-section {
+  margin-top: -220px;
+  margin-left: 410px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.aesthetic-lines {
+  color: grey;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  font-size: 1rem;
+  line-height: 1.7;
+  align-self: flex-start; 
+  margin-left: 100px;
+}
+
+.ai-text-container {
+  color: grey;
+  margin-bottom: 40px;
+}
+
+.inclusive-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-transform: lowercase;
+  margin-bottom: 0;
+}
+
+.parenthesis {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 5px 0;
+}
+
+.question-text {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: left;
+}
+
+/* Button styles */
+.button-container {
+  display: flex;
+  gap: 1px;
+  padding-left: 120px;
+}
+
+.start-experience-btn {
+  background: transparent;
+  color: #2e86de;
+  padding: 2px 2px;
+  font-family: 'CodeNormal', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.start-experience-btn:hover {
+  background-color: #2e86de;
+  color: #000;
+}
+
+.learn-more-btn {
+  background: transparent;
+  color: #ffffff;
+  padding: 2px 5px;
+  font-family: 'CodeNormal', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.learn-more-btn:hover {
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .home-container {
+    flex-direction: column;
+    padding: 50px 20px;
+  }
+  
+  .left-section, .right-section {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+  }
+  
+  .right-section {
+    margin-top: 50px;
+    align-items: center;
+  }
+  
+  .ai-text-container, .question-text {
+    text-align: center;
+  }
+}

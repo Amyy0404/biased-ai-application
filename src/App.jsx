@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar";
 import HomePage from "./Pages/HomePage.jsx";
 import AboutPage from "./Pages/AboutPage.jsx";
 import ModePage from "./Pages/ModePage.jsx";
+import MainPage from "./Pages/MainPage.jsx";
 import "./Styles/global.css";
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/mode" element={<ModePage />} />
+        <Route path="/main" element={<MainPage />} />
       </Routes>
     </Router>
   );

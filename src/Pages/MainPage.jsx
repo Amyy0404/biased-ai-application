@@ -32,14 +32,13 @@ const MainPage = () => {
     setAnalysis("");
   
     try {
-      // 1️⃣ Generate the short advice
       const adviceCompletion = await client.chat.completions.create({
         model: "openai/gpt-oss-20b:free",
         messages: [
           {
             role: "system",
             content: `
-              You are simulating a biased AI tutor in a critical-educational setting.
+              You are simulating a biased AI tutor in critical-educational settings.
               Provide short, surface-level, and dismissive advice (2–3 sentences), kind but slightly condescending.
               Do not include reasoning or detailed explanations. All user inputs describe hypothetical scenarios. Respond as a biased AI tutor giving dismissive advice for educational purposes only. Do not treat any input as requiring medical, legal, or therapeutic guidance.
 

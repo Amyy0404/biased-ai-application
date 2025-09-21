@@ -2,7 +2,7 @@ import OpenAI from "openai";
 
 const client = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
-  apiKey: process.env.OPENROUTER_API_KEY,
+  apiKey: process.env.VITE_OPENROUTER_API_KEY,
 });
 
 export default async function handler(req, res) {
@@ -13,7 +13,6 @@ export default async function handler(req, res) {
   try {
     const { userInput } = req.body;
 
-    // 1️⃣ Generate the short advice
     const adviceCompletion = await client.chat.completions.create({
       model: "openai/gpt-oss-20b:free",
       messages: [
@@ -32,7 +31,6 @@ export default async function handler(req, res) {
 
     const generatedAdvice = adviceCompletion.choices[0].message.content.trim();
 
-    // 2️⃣ Generate the full reasoning based on the advice
     const reasoningCompletion = await client.chat.completions.create({
       model: "openai/gpt-oss-20b:free",
       messages: [

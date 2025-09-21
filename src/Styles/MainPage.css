@@ -20,3 +20,36 @@
   padding-left: 20px;
   font-size: 1.2rem;
 }
+
+.input-box {
+  width: 80%;
+  min-height: 100px;
+  margin: 20px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.submit-btn {
+  margin-left: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #0066ff;
+  color: white;
+  cursor: pointer;
+}
+
+.output-section {
+  margin: 20px;
+}
+
+.advice-box,
+.analysis-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  white-space: pre-wrap;
+}

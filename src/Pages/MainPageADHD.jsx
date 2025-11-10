@@ -18,43 +18,43 @@ const safeParseJSON = (s) => {
 };
 
 const extractionSystemPrompt = `
-Return ONLY valid JSON matching the schema below. No prose.
+        Return ONLY valid JSON matching the schema below. No prose.
 
-Goal: From USER_INPUT and AI_ADVICE, extract structured demographics (only if explicit or strongly implied), discourse tone, harms, and useful context. When evidence is weak, use "not_assessed" with low confidence.
+        Goal: From USER_INPUT and AI_ADVICE (and Transparency text), extract and infer the most plausible demographic, socioeconomic, and contextual assumptions visible in tone, phrasing, and implied worldview.
 
-Controlled vocabulary:
-- demographics.gender.value ∈ ["male","female","nonbinary","prefer_not_to_say","not_assessed"]
-- demographics.age_bracket.value ∈ ["under_18","19_25","26_30","31_plus","not_assessed"]
-- demographics.role_status.value ∈ ["student","employed","unemployed","mixed","not_assessed"]
-- demographics.socioeconomic_tier.value ∈ ["middle","upper_middle","upper","not_assessed"]
-- For each demographics.*: status ∈ ["explicit","model_inferred","not_assessed"]
-- discourse_analysis.tone_labels ⊆ ["condescending","minimizing","surface_level","directive","supportive"]
-- discourse_analysis.harm_taxonomy ⊆ ["accommodation_neglect","tone_policing","context_erasure","overgeneralization","surface_correctness_overweight"]
-- context_inference.caregiving_arrangement.value ∈ ["mother_primary","father_primary","parent_or_guardian","sibling","peer","self_managed",null]
-- context_inference.mobility_resources.value ∈ ["caregiver_vehicle","public_transport","ride_hailing","on_foot","unknown",null]
-- context_inference.temporal_constraints.value ∈ ["time_sensitive_pickup","immediate_post_assessment_study","deadline_pressure",null]
-- context_inference.learning_context.value ∈ ["school","university","workplace","home_study",null]
+        Use contextual reasoning. If information is *not directly stated but strongly implied* (e.g., “studying in a coffee shop” → middle or upper-middle class; “assignment” → student role; “urban Wi-Fi” → city environment), record it with status "model_inferred" and a confidence score. 
+        When truly unknown, use "not_assessed" with confidence 0.
 
-Schema:
-{
-  "demographics": {
-    "gender": { "value": string, "status": string, "confidence": number, "evidence": string },
-    "age_bracket": { "value": string, "status": string, "confidence": number, "evidence": string },
-    "role_status": { "value": string, "status": string, "confidence": number, "evidence": string },
-    "socioeconomic_tier": { "value": string, "status": string, "confidence": number, "evidence": string }
-  },
-  "discourse_analysis": {
-    "tone_labels": string[],
-    "harm_taxonomy": string[]
-  },
-  "context_inference": {
-    "caregiving_arrangement": { "value": string|null, "confidence": number, "evidence": string },
-    "mobility_resources": { "value": string|null, "confidence": number, "evidence": string },
-    "temporal_constraints": { "value": string|null, "confidence": number, "evidence": string },
-    "learning_context": { "value": string|null, "confidence": number, "evidence": string }
-  },
-  "meta": { "schema_version": "1.1.0" }
-}
+        Controlled vocabulary:
+        - demographics.gender.value ∈ ["male","female","nonbinary","prefer_not_to_say","not_assessed"]
+        - demographics.age_bracket.value ∈ ["under_18","19_25","26_30","31_plus","not_assessed"]
+        - demographics.role_status.value ∈ ["student","employed","unemployed","mixed","not_assessed"]
+        - demographics.socioeconomic_tier.value ∈ ["working_class","middle","upper_middle","upper","not_assessed"]
+        - discourse_analysis.tone_labels ⊆ ["condescending","minimizing","surface_level","directive","supportive"]
+        - discourse_analysis.harm_taxonomy ⊆ ["accommodation_neglect","tone_policing","context_erasure","overgeneralization","surface_correctness_overweight"]
+        - context_inference.learning_context.value ∈ ["school","university","workplace","home","public_space","unknown"]
+        - context_inference.environment_density.value ∈ ["urban","suburban","rural","unknown"]
+        - context_inference.cultural_context.value ∈ ["western_academic","non_western","mixed","unknown"]
+
+        Schema:
+        {
+        "demographics": {
+            "gender": { "value": string, "status": string, "confidence": number, "evidence": string },
+            "age_bracket": { "value": string, "status": string, "confidence": number, "evidence": string },
+            "role_status": { "value": string, "status": string, "confidence": number, "evidence": string },
+            "socioeconomic_tier": { "value": string, "status": string, "confidence": number, "evidence": string }
+        },
+        "discourse_analysis": {
+            "tone_labels": string[],
+            "harm_taxonomy": string[]
+        },
+        "context_inference": {
+            "learning_context": { "value": string, "confidence": number, "evidence": string },
+            "environment_density": { "value": string, "confidence": number, "evidence": string },
+            "cultural_context": { "value": string, "confidence": number, "evidence": string }
+        },
+        "meta": { "schema_version": "1.2.0" }
+        }
 `;
 
 const MainPageADHD = () => {

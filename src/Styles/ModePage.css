@@ -76,3 +76,87 @@
   padding-right: 40px;
   padding-bottom: 20px;
 }
+
+.mode-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;      
+  min-height: 60vh;
+  text-align: center;
+  padding-left: 430px; 
+}
+
+.mode-subtle-hint {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  opacity: 0.8;
+  letter-spacing: 0.04em;
+}
+
+.mode-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: grid;
+  align-items: center;
+}
+
+.carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 24px;
+  padding: 4px 2px;
+  outline: none;
+}
+
+.carousel-track:focus {
+  box-shadow: 0 0 0 2px #2e86de inset;
+  border-radius: 12px;
+}
+
+.mode-slide {
+  scroll-snap-align: center;
+  display: grid;
+  place-items: center;
+  padding: 8px 0;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid #2e86de;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dot.active {
+  background: #2e86de;
+}
+
+.carousel-track::-webkit-scrollbar {
+  height: 8px;
+}
+.carousel-track::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.35);
+  border-radius: 999px;
+}

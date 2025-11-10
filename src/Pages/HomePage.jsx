@@ -1,4 +1,3 @@
-// HomePage.jsx
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HomePageIcon from "../Images/HomePageIcon.png";
@@ -24,7 +23,6 @@ const HomePage = () => {
 
   return (
     <div className="home-container">
-      {/* Left side with mission content */}
       <div className="left-section">
         <div className="icon-circle">
           <img src={HomePageIcon} alt="Mission Icon" className="mission-icon" />
@@ -32,13 +30,12 @@ const HomePage = () => {
         <h2 className="mission-heading">my <br></br> mission.</h2>
         <p className="mission-text">
           This project challenges the idea that Generative AI is neutral or inclusive. By
-          highlighting how AI tools can overlook or misrepresent disabled and neurodiverse
-          learners, we aim to promote more critical, equitable, and reflective uses of AI in
+          highlighting how AI tools can overlook or misrepresent neurodiverse learners or
+          learners struggling with learning disabilities, we aim to promote more critical, equitable, and reflective uses of AI in
           education.
         </p>
       </div>
 
-      {/* Right side with interactive elements */}
       <div className="right-section">
         <div className="aesthetic-lines">
           <span>//</span>

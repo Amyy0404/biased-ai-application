@@ -5,6 +5,8 @@ import HomePage from "./Pages/HomePage.jsx";
 import AboutPage from "./Pages/AboutPage.jsx";
 import ModePage from "./Pages/ModePage.jsx";
 import MainPage from "./Pages/MainPage.jsx";
+import MainPageADHD from "./Pages/MainPageADHD.jsx";          
+import MainPageDyslexia from "./Pages/MainPageDyslexia.jsx";  
 import "./Styles/global.css";
 
 const App = () => {
@@ -16,6 +18,8 @@ const App = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/mode" element={<ModePage />} />
         <Route path="/main" element={<MainPage />} />
+        <Route path="/main-adhd" element={<MainPageADHD />} />          
+        <Route path="/main-dyslexia" element={<MainPageDyslexia />} />    
       </Routes>
     </Router>
   );

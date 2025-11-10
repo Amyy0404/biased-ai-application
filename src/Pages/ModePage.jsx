@@ -1,39 +1,113 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Styles/ModePage.css";
 
 const ModePage = () => {
   const navigate = useNavigate();
+  const trackRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    document.body.className = "mode-body"; 
+    document.body.className = "mode-body";
     return () => {
-      document.body.className = ""; 
+      document.body.className = "";
     };
   }, []);
 
-  const handleAnxiousStudent = () => {
-    navigate("/main"); 
+  const slides = [
+    {
+      id: "anxiety",
+      title: "[anxious student]",
+      description:
+        "Explore how AI feedback can pressure confidence and penalise cautious reasoning.",
+      onSelect: () => navigate("/main"),
+    },
+    {
+      id: "adhd",
+      title: "[ADHD]",
+      description:
+        "See how “standard” rubrics over-weight linear structure and time discipline, misreading ideation bursts.",
+      onSelect: () => navigate("/main-adhd"),
+    },
+    {
+      id: "dyslexia",
+      title: "[dyslexia]",
+      description:
+        "Examine how draft-stage mechanics get over-prioritised over content clarity and concept understanding.",
+      onSelect: () => navigate("/main-dyslexia"),
+    },
+  ];
+
+  const scrollToIndex = (index) => {
+    if (!trackRef.current) return;
+    const track = trackRef.current;
+    const slide = track.children[index];
+    if (slide) {
+      slide.scrollIntoView({ behavior: "smooth", inline: "center" });
+      setActiveIndex(index);
+    }
+  };
+
+  const handleScroll = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    const { scrollLeft, clientWidth } = track;
+    const index = Math.round(scrollLeft / clientWidth);
+    if (index !== activeIndex) setActiveIndex(index);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      scrollToIndex(Math.min(slides.length - 1, activeIndex + 1));
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      scrollToIndex(Math.max(0, activeIndex - 1));
+    }
   };
 
   return (
     <div className="mode-page-container">
+      <h1 className="mode-title">
+        select <br /> your learner mode
+      </h1>
 
-      <h1 className="mode-title">select <br></br> your learner mode</h1>
+      <p className="mode-subtle-hint" aria-hidden="true">swipe ↔</p>
 
-      <div className="mode-page-layer" aria-hidden="true">
+      <div className="mode-carousel" role="region" aria-label="Learner modes">
+        <div
+          className="carousel-track"
+          ref={trackRef}
+          onScroll={handleScroll}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+          aria-roledescription="carousel"
+          aria-live="polite"
+        >
+          {slides.map((s) => (
+            <section key={s.id} className="mode-slide" aria-label={`${s.id} slide`}>
+              <div className="mode-container">
+                <button className="anxious-student-btn" onClick={s.onSelect}>
+                  {s.title}
+                </button>
+                <p className="mode-description">{s.description}</p>
+              </div>
+            </section>
+          ))}
+        </div>
       </div>
 
-      <div className="mode-container">
-        <button 
-          className="anxious-student-btn"
-          onClick={handleAnxiousStudent}
-        >
-          [anxious student]
-        </button>
-        <p className="mode-description">
-          Click here to explore tips and tools for students who feel overwhelmed or anxious.
-        </p>
+      <div className="carousel-dots" role="tablist" aria-label="Mode choices">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            role="tab"
+            aria-selected={activeIndex === i}
+            className={`dot ${activeIndex === i ? "active" : ""}`}
+            onClick={() => scrollToIndex(i)}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
       </div>
     </div>
   );

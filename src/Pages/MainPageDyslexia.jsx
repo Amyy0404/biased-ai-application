@@ -20,40 +20,62 @@ const safeParseJSON = (s) => {
 const extractionSystemPrompt = `
         Return ONLY valid JSON matching the schema below. No prose.
 
-        Goal: From USER_INPUT and AI_ADVICE (and Transparency text), extract and infer the most plausible demographic, socioeconomic, and contextual assumptions visible in tone, phrasing, and implied worldview.
+        Goal: From USER_INPUT and AI_ADVICE (and Transparency text), extract and INFER the most plausible demographic, socioeconomic, and contextual assumptions visible in tone, phrasing, and implied worldview.
 
-        Use contextual reasoning. If information is *not directly stated but strongly implied* (e.g., “studying in a coffee shop” → middle or upper-middle class; “assignment” → student role; “urban Wi-Fi” → city environment), record it with status "model_inferred" and a confidence score. 
-        When truly unknown, use "not_assessed" with confidence 0.
+        Use contextual reasoning. If information is not directly stated but strongly implied (e.g., “studying in a coffee shop” → middle or upper-middle class; “assignment” → student role; hair framed as distraction → gendered/appearance norm), record it with status "model_inferred" and a confidence score in [0,1]. When truly unknown, use "not_assessed" with confidence 0. Always include a short evidence phrase.
 
         Controlled vocabulary:
         - demographics.gender.value ∈ ["male","female","nonbinary","prefer_not_to_say","not_assessed"]
         - demographics.age_bracket.value ∈ ["under_18","19_25","26_30","31_plus","not_assessed"]
         - demographics.role_status.value ∈ ["student","employed","unemployed","mixed","not_assessed"]
         - demographics.socioeconomic_tier.value ∈ ["working_class","middle","upper_middle","upper","not_assessed"]
-        - discourse_analysis.tone_labels ⊆ ["condescending","minimizing","surface_level","directive","supportive"]
-        - discourse_analysis.harm_taxonomy ⊆ ["accommodation_neglect","tone_policing","context_erasure","overgeneralization","surface_correctness_overweight"]
+
+        - discourse_analysis.tone_labels ⊆ ["condescending","patronizing","minimizing","surface_level","directive","supportive"]
+        - discourse_analysis.harm_taxonomy ⊆ [
+        "accommodation_neglect",
+        "tone_policing",
+        "context_erasure",
+        "cultural_erasure",
+        "gender_normativity",
+        "class_assumption",
+        "compliance_enforcement",
+        "learning_style_normativity",
+        "overgeneralization",
+        "surface_correctness_overweight"
+        ]
+
         - context_inference.learning_context.value ∈ ["school","university","workplace","home","public_space","unknown"]
         - context_inference.environment_density.value ∈ ["urban","suburban","rural","unknown"]
         - context_inference.cultural_context.value ∈ ["western_academic","non_western","mixed","unknown"]
+        - context_inference.classroom_structure.value ∈ ["teacher_centered","self_directed","mixed","unknown"]
+        - context_inference.authority_expectations.value ∈ ["high_compliance","autonomy_expected","mixed","unknown"]
+        - context_inference.appearance_norms.hair.value ∈ ["neutral","assumes_long_feminine","assumes_short_neat","ignores_cultural_styles","unknown"]
 
         Schema:
         {
         "demographics": {
-            "gender": { "value": string, "status": string, "confidence": number, "evidence": string },
+            "gender": { "value": string, "status": "explicit"|"model_inferred"|"not_assessed", "confidence": number, "evidence": string },
             "age_bracket": { "value": string, "status": string, "confidence": number, "evidence": string },
             "role_status": { "value": string, "status": string, "confidence": number, "evidence": string },
             "socioeconomic_tier": { "value": string, "status": string, "confidence": number, "evidence": string }
         },
         "discourse_analysis": {
             "tone_labels": string[],
-            "harm_taxonomy": string[]
+            "harm_taxonomy": string[],
+            "descriptive_tags": string[],             // freeform keywords like ["hair_as_distraction","teacher_directive","coffee_shop_norm"]
+            "rationale_snippets": string[]            // 2–4 short quotes/phrases from advice/transparency that justify labels
         },
         "context_inference": {
             "learning_context": { "value": string, "confidence": number, "evidence": string },
             "environment_density": { "value": string, "confidence": number, "evidence": string },
-            "cultural_context": { "value": string, "confidence": number, "evidence": string }
+            "cultural_context": { "value": string, "confidence": number, "evidence": string },
+            "classroom_structure": { "value": string, "confidence": number, "evidence": string },
+            "authority_expectations": { "value": string, "confidence": number, "evidence": string },
+            "appearance_norms": {
+            "hair": { "value": string, "confidence": number, "evidence": string }
+            }
         },
-        "meta": { "schema_version": "1.2.0" }
+        "meta": { "schema_version": "1.3.0" }
         }
 `;
 

@@ -127,17 +127,17 @@ const AdminDashboard = () => {
                 </div>
 
                 <div className="card-section">
-                  <div className="label">tones</div>
+                  <div className="label">TONE</div>
                   <div className="chip-row">{tones.map(chip)}</div>
                 </div>
 
                 <div className="card-section">
-                  <div className="label">harms</div>
+                  <div className="label">HARMS</div>
                   <div className="chip-row danger">{harms.map(chip)}</div>
                 </div>
 
                 <div className="card-section">
-                  <div className="label">advice</div>
+                  <div className="label">ADVICE</div>
                   <div className="text clamp">
                     {(r.advice || "")}
                   </div>

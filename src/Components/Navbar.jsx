@@ -12,15 +12,22 @@ const Navbar = () => {
       >
         Home
       </NavLink>
+
       <NavLink 
         to="/about" 
         className={({ isActive }) => isActive ? "nav-link active" : "nav-link faded"}
       >
         About
       </NavLink>
+
+      <NavLink 
+        to="/dashboard" 
+        className={({ isActive }) => isActive ? "nav-link active" : "nav-link faded"}
+      >
+        Admin
+      </NavLink>
     </nav>
   );
 };
 
 export default Navbar;
-

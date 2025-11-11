@@ -7,6 +7,7 @@ import ModePage from "./Pages/ModePage.jsx";
 import MainPage from "./Pages/MainPage.jsx";
 import MainPageADHD from "./Pages/MainPageADHD.jsx";          
 import MainPageDyslexia from "./Pages/MainPageDyslexia.jsx";  
+import AdminDashboard from "./Pages/AdminDashboard.jsx";
 import "./Styles/global.css";
 
 const App = () => {
@@ -19,7 +20,8 @@ const App = () => {
         <Route path="/mode" element={<ModePage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/main-adhd" element={<MainPageADHD />} />          
-        <Route path="/main-dyslexia" element={<MainPageDyslexia />} />    
+        <Route path="/main-dyslexia" element={<MainPageDyslexia />} />   
+        <Route path="/dashboard" element={<AdminDashboard />} /> 
       </Routes>
     </Router>
   );

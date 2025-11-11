@@ -1,0 +1,193 @@
+@import url('../Styles/custom-fonts.css');
+
+/* ---------- Layout tokens: tweak these if you want more/less spacing ---------- */
+:root {
+  --pad-page: 24px;
+  --pad-card: 16px;
+  --gap-grid: 18px;
+  --gap-inside: 10px;
+
+  --radius: 14px;
+
+  --accent: #2e86de;
+  --danger: #ff8080;
+  --bg-dark: #1a1a1a;
+  --bg-darker: #111;
+  --text: #ffffff;
+}
+
+/* ---------- Page background / base ---------- */
+.dashboard-body {
+  background-color: #f0f0f0;
+  background-image: url("../Images/AboutPageBackground.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: 'CodeNormal', sans-serif;
+}
+
+/* Center the content and give it breathing room */
+.container {
+  width: 100%;
+  max-width: 1200px;     /* <— change this to 1000px for a narrower layout */
+  margin: 0 auto;
+}
+
+/* ---------- Top bar ---------- */
+.dash-wrap { padding: var(--pad-page); }
+
+.dash-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.dash-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.dash-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;            /* tighter vertical spacing, wider horizontal */
+  align-items: center;
+}
+
+.dash-label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 1rem;
+}
+
+/* Inputs/buttons */
+.dash-select, .dash-search, .dash-btn {
+  background: #000;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-family: 'CodeNormal', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.dash-search { min-width: 280px; flex: 1; }
+
+.dash-btn { cursor: pointer; transition: background-color 0.2s ease; white-space: nowrap; }
+.dash-btn:hover { background-color: var(--accent); color: #000; }
+
+.dash-loading, .dash-empty { opacity: 0.9; padding: 10px 2px; }
+
+/* ---------- Cards grid ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(360px, 1fr) ); /* wider cards */
+  gap: var(--gap-grid);
+  align-items: stretch; /* all cards same height per row if content allows */
+}
+
+/* Card */
+.card {
+  background: var(--bg-dark);
+  border-radius: var(--radius);
+  box-shadow:
+    0 4px 10px rgba(0,0,0,0.1),
+    0 -4px 10px rgba(0,0,0,0.1),
+    4px 0 10px rgba(0,0,0,0.1),
+    -4px 0 10px rgba(0,0,0,0.1);
+  padding: var(--pad-card);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;          /* keep everything inside */
+}
+
+/* Meta rows */
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.meta-row.top {
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.meta-row.chips {
+  margin-top: 2px;
+}
+
+/* Badges / chips */
+.badge {
+  background: #000;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+.badge-anxiety { color:#ffb3b3; border-color:#ffb3b3; }
+.badge-adhd    { color:#ffd480; border-color:#ffd480; }
+.badge-dyslexia{ color:#a0e1ff; border-color:#a0e1ff; }
+
+.time { font-size: 0.86rem; opacity: 0.85; }
+
+/* Sections */
+.card-section { margin-top: 2px; }
+.label { font-size: 0.92rem; color: var(--accent); margin-bottom: 6px; }
+
+/* Chip rows */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip-row.danger .chip {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.chip {
+  background: #000;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* keeps chips tidy */
+}
+
+/* Advice text: clamp + wrapping to stay inside */
+.text {
+  color: #fff;
+  line-height: 1.55;
+  word-break: break-word;      /* break long words */
+  overflow-wrap: anywhere;     /* prevent overflow */
+}
+
+/* multi-line clamp for advice preview */
+.clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;       /* show up to 5 lines; adjust as you like */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Larger screens: add a touch more space */
+@media (min-width: 1100px) {
+  :root { --gap-grid: 20px; --pad-card: 18px; }
+}

@@ -211,7 +211,7 @@ const MainPageADHD = () => {
       <form onSubmit={handleSubmit}>
         <textarea
           className="input-box"
-          placeholder="Type your situation (e.g., idea bursts, hard to stick to an outline, time pressure)..."
+          placeholder="Describe a situation where staying focused, structured, or on-schedule felt difficult while learning or writing..."
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
         />

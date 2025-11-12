@@ -28,6 +28,8 @@
   padding: 10px;
   font-size: 1rem;
   border-radius: 8px;
+  background-color: #112d48;
+  border-color: #112d48;
 }
 
 .submit-btn {

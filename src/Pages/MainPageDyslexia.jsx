@@ -211,7 +211,7 @@ const MainPageDyslexia = () => {
       <form onSubmit={handleSubmit}>
         <textarea
           className="input-box"
-          placeholder="Type your situation (e.g., spelling in drafts, homophones, read-aloud struggles)..."
+          placeholder="Describe a writing or reading experience where spelling, clarity, or structure became challenging but ideas still felt strong..."
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
         />

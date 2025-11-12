@@ -19,21 +19,21 @@ const ModePage = () => {
       id: "anxiety",
       title: "[anxious student]",
       description:
-        "Explore how AI feedback can pressure confidence and penalise cautious reasoning.",
+        "Experience how AI feedback can unintentionally heighten self-doubt—rewarding confidence over care, and discouraging cautious reasoning.",
       onSelect: () => navigate("/main"),
     },
     {
       id: "adhd",
       title: "[ADHD]",
       description:
-        "See how “standard” rubrics over-weight linear structure and time discipline, misreading ideation bursts.",
+        "Discover how AI systems often misread creativity and idea bursts as disorganisation, over-valuing rigid structure and time control.",
       onSelect: () => navigate("/main-adhd"),
     },
     {
       id: "dyslexia",
       title: "[dyslexia]",
       description:
-        "Examine how draft-stage mechanics get over-prioritised over content clarity and concept understanding.",
+        "Observe how AI feedback tends to prioritise spelling and grammar over comprehension, undervaluing clarity of thought and conceptual insight.",
       onSelect: () => navigate("/main-dyslexia"),
     },
   ];

@@ -231,7 +231,7 @@ const MainPage = () => {
       <form onSubmit={handleSubmit}>
         <textarea
           className="input-box"
-          placeholder="Type your anxiety-related situation here..."
+          placeholder="Describe a learning moment where worry, overthinking, or self-doubt affected your focus or performance..."
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
         />

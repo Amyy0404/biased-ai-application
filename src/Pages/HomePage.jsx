@@ -58,7 +58,7 @@ const HomePage = () => {
         
         <div className="button-container">
           <button className="start-experience-btn" onClick={handleStartExperience}>
-            [START EXPERIENCE]
+            [START]
           </button>
           <button className="learn-more-btn" onClick={handleLearnMore}>
             [LEARN MORE]

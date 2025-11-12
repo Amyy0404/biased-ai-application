@@ -12,7 +12,7 @@ const AboutPage = () => {
   return (
     <div className="about-wrapper"> 
       <div className="about-container">
-        <h1 className="about-title">Challenging the Neutrality of AI in Learning Differences</h1>
+        <h1 className="about-title">challenging the neutrality of AI in learning differences</h1>
 
         <div className="about-columns">
           <div className="about-column">

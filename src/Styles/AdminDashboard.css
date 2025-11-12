@@ -9,7 +9,7 @@
   --radius: 14px;
 
   --accent: #77b0e9;
-  --danger: #9bc2e9;
+  --danger: #bad2eb;
   --bg-dark: #00345A;
   --bg-darker: #00345A;
   --text: #ffffff;
@@ -126,9 +126,9 @@
   text-transform: lowercase;
   white-space: nowrap;
 }
-.badge-anxiety { color:#ffb3b3; border-color:#ffb3b3; }
-.badge-adhd    { color:#ffd480; border-color:#ffd480; }
-.badge-dyslexia{ color:#a0e1ff; border-color:#a0e1ff; }
+.badge-anxiety { color:#7463c8; border-color:#bcb5e0; }
+.badge-adhd    { color:#c060c2; border-color:#b79db8; }
+.badge-dyslexia{ color:#57c0f1; border-color:#a0e1ff; }
 
 .time { font-size: 0.86rem; opacity: 0.85; }
 

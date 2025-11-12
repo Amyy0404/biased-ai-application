@@ -1,15 +1,20 @@
 @import url('../Styles/custom-fonts.css');
 
 .navbar {
-    position: sticky;
-    top: 0;
-    left: 0;
-    display: flex;
-    gap: 20px;
-    padding: 15px 25px;
-    font-family: 'CodeNormal', sans-serif; 
-    z-index: 999;
-  }  
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: 20px;
+  padding: 15px 25px;
+  font-family: 'CodeNormal', sans-serif; 
+  z-index: 999;
+
+  justify-content: flex-start;  
+  align-items: center;
+  width: 100%;
+  background: transparent;      
+}
 
 .nav-link {
   color: #00aaff;
@@ -26,4 +31,9 @@
 .nav-link:hover {
   opacity: 1;
   color: #2db9ff;
+}
+
+.navbar {
+  align-self: flex-start;
+  width: 100%;
 }
